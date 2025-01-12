@@ -1,0 +1,75 @@
+.horizontal-scroll-container {
+  position: relative;
+  width: 100%;
+  touch-action: pan-y pinch-zoom;
+}
+
+.horizontal-scroll-content {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  will-change: transform, scroll-position;
+  user-select: none;
+  scroll-snap-type: x proximity;
+  scroll-behavior: auto;
+}
+
+.horizontal-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll-content.dragging {
+  cursor: grabbing !important;
+  scroll-snap-type: none;
+}
+
+.horizontal-scroll-content > * {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+  z-index: 10;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.horizontal-scroll-container:hover .scroll-arrow {
+  opacity: 1;
+}
+
+.scroll-arrow:active {
+  transform: translateY(-50%) translateZ(0) scale(0.95);
+}
+
+.scroll-arrow:hover {
+  background-color: rgb(249, 250, 251);
+}
+
+.scroll-arrow.left {
+  left: 1rem;
+}
+
+.scroll-arrow.right {
+  right: 1rem;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .scroll-arrow {
+    display: none;
+  }
+}
