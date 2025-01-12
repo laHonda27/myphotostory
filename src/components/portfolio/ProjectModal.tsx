@@ -49,7 +49,7 @@ export default function ProjectModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 mt-20"
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 mt-10"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -87,29 +87,11 @@ export default function ProjectModal({
                   className="w-full h-auto max-h-[85vh] object-contain rounded-lg select-none"
                   draggable={false}
                 />
-                {project.images.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                    {project.images.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentIndex(index);
-                        }}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          index === currentIndex ? 'bg-white w-8' : 'bg-white/50'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                )}
+              
               </>
             )}
 
-            <div className="mt-4 text-white">
-              <h3 className="text-2xl font-medium mb-2">{project.title}</h3>
-              <p className="text-white/80">{project.description}</p>
-            </div>
+         
           </motion.div>
 
           {/* Navigation buttons */}
